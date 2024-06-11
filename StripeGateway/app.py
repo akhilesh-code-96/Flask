@@ -1,10 +1,15 @@
 from flask import Flask, redirect, render_template, url_for, request, jsonify
 import stripe
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__) # Initialize
 
-app.config['STRIPE_PUBLIC_KEY'] = 'pk_test_51PPqNSJbkURFzj1KHohUlaHfnkftHqY3xuM0LLuW3mpg4sdkYfzGBqTL0J5phBpnb9lkqET9HRbVrgbM18MX4EB200UAV0kGza'
-app.config['STRIPE_SECRET_KEY'] = 'sk_test_51PPqNSJbkURFzj1KO9Xan2BhMGGv449xmqMZh2mBPeS2IWUzw5NtNjSeA4vQ65gscUiDHDjLAjAmMkrwXhmAXcOa004oF48q1T'
+def configure():
+  load_dotenv()
+
+app.config['STRIPE_PUBLIC_KEY'] = os.getenv('api_pub')
+app.config['STRIPE_SECRET_KEY'] = os.getenv('api_secret')
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 YOUR_DOMAIN = 'http://localhost:5000'
@@ -47,4 +52,5 @@ def cancel():
   return render_template("cancel.html")
 
 if __name__ == "__main__":
+  configure()
   app.run(debug=True)
