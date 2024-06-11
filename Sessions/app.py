@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from datetime import timedelta
+from dotenv import load_dotenv
+import os
+
+def configure():
+  load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "aldfkjladsfs"
+app.secret_key = os.getenv('api_key')
 app.permanent_session_lifetime = timedelta(minutes=5)
 
 @app.route("/")
@@ -41,4 +46,5 @@ def logout():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+  configure()
+  app.run(debug=True)
