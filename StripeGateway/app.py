@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, request, jsonify
 import stripe
 
-app = Flask(__name__)
+app = Flask(__name__) # Intialize
 
 app.config['STRIPE_PUBLIC_KEY'] = 'pk_test_51PPqNSJbkURFzj1KHohUlaHfnkftHqY3xuM0LLuW3mpg4sdkYfzGBqTL0J5phBpnb9lkqET9HRbVrgbM18MX4EB200UAV0kGza'
 app.config['STRIPE_SECRET_KEY'] = 'sk_test_51PPqNSJbkURFzj1KO9Xan2BhMGGv449xmqMZh2mBPeS2IWUzw5NtNjSeA4vQ65gscUiDHDjLAjAmMkrwXhmAXcOa004oF48q1T'
