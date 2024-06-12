@@ -18,7 +18,7 @@
 </head>
 <body class="dark">
 
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <nav class="bg-gray-900 border-gray-200 dark:bg-gray-900">
     <div class="max-w-screen-xl mx-auto px-4 py-2.5">
       <div class="flex justify-between items-center">
         <a href="/" class="flex items-center">
@@ -26,12 +26,12 @@
           <span class="text-xl font-semibold whitespace-nowrap dark:text-white">Placipidea</span>
         </a>
         <ul class="hidden md:flex space-x-4">
-          <li><a href="{{ url_for('home') }}" class="text-gray-700 hover:text-blue-700 dark:text-gray-400">Home</a></li>
-          <li><a href="{{ url_for('get_places_data') }}" class="text-gray-700 hover:text-blue-700 dark:text-gray-400">Search</a></li>
-          <li><a href="{{ url_for('about') }}" class="text-gray-700 hover:text-blue-700 dark:text-gray-400">About</a></li>
-          <li><a href="{{ url_for('contact') }}" class="text-gray-700 hover:text-blue-700 dark:text-gray-400">Contact</a></li>
+          <li><a href="{{ url_for('home') }}" class="text-gray-400 hover:text-blue-500">Home</a></li>
+          <li><a href="{{ url_for('get_places_data') }}" class="text-gray-400 hover:text-blue-500">Search</a></li>
+          <li><a href="{{ url_for('about') }}" class="text-gray-400 hover:text-blue-500">About</a></li>
+          <li><a href="{{ url_for('contact') }}" class="text-gray-400 hover:text-blue-500">Contact</a></li>
         </ul>
-        <button class="md:hidden text-gray-500 hover:text-blue-700 dark:text-gray-400 focus:outline-none">
+        <button class="md:hidden text-gray-500 hover:text-blue-700 focus:outline-none">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
           </svg>
@@ -67,24 +67,31 @@
     </div>
 
   </div>
-
-  <footer class="bg-white rounded-lg shadow mx-4 my-8 dark:bg-gray-800">
-    <div class="max-w-screen-xl mx-auto px-4 py-8 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">&copy; 2023
-        <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+  <!-- Footer -->
+  <footer class="bg-gray-800 rounded-lg shadow mx-4 my-8">
+    <div
+      class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+    >
+      <span class="text-sm text-gray-400 sm:text-center">&copy; 2024
+        <a href="https://flowbite.com/" class="hover:underline">Placipidea™</a>.
+        All Rights Reserved.
       </span>
-      <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-        <li><a href="#" class="hover:underline me-4 md:me-6">About</a></li>
-        <li><a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
-        <li><a href="#" class="hover:underline me-4 md:me-6">Licensing</a></li>
-        <li><a href="#" class="hover:underline">Contact</a></li>
+      <ul
+        class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-400 sm:mt-0"
+      >
+        <li>
+          <a href="{{url_for('about') }}" class="hover:underline mr-4 md:mr-6">About</a>
+        </li>
+        <li>
+          <a href="{{ url_for('contact') }}" class="hover:underline">Contact</a>
+        </li>
       </ul>
     </div>
   </footer>
-
+  <!-- Script -->
   <script>
     function redirectToDetails(button) {
-      const fsq_id = button.getAttribute("data-fsq-id")
+      const fsq_id = button.getAttribute("data-fsq-id");
       const url = `/details/${fsq_id}`;
       window.location.href = url;
     }
