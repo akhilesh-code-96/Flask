@@ -9,11 +9,11 @@
     />
     <title>Images</title>
   </head>
-  <body class="bg-gray-100 dark:bg-gray-900">
-    <div class="container mx-auto my-8">
+  <body style="background-image: linear-gradient(135deg, #000000, #333333);" class="bg-gray-100 dark:bg-gray-900">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-5">
       {% for item in d %}
         <div class="mb-4">
-          <img src="{{ url_for('fetch_image') }}?prefix={{ item.prefix }}&suffix={{ item.suffix }}" alt="Image" class="rounded-lg shadow-lg">
+          <img class="object-cover object-center h-[300px] md:h-[400px] w-full rounded-lg dark:filter dark:brightness-75" src="{{ url_for('fetch_image') }}?prefix={{ item.prefix }}&suffix={{ item.suffix }}" alt="Image">
         </div>
       {% endfor %}
     </div>

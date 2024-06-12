@@ -27,10 +27,10 @@ def get_places_data():
     print(location)
     g = geocoder.osm(location)  # Using OpenStreetMap geocoder
     print(g.json)
-    if g.ok:
+    try:
         lat, lon = g.latlng
-    else:
-        return render_template("error.html")
+    except ValueError as error_message:
+        return render_template("error.html", d=error_message)
     
     ll = f"{lat},{lon}"
     
