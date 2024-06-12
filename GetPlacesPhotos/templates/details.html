@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/css/output.css') }}"
+    />
+    <title>Images</title>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto my-8">
+      {% for item in d %}
+        <div class="mb-4">
+          <img src="{{ url_for('fetch_image') }}?prefix={{ item.prefix }}&suffix={{ item.suffix }}" alt="Image" class="rounded-lg shadow-lg">
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
