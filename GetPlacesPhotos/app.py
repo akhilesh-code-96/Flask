@@ -2,11 +2,14 @@ from flask import Flask, redirect, render_template, url_for, request
 import os
 import geocoder
 import requests
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+api_key = os.getenv('api')
 
-api_key = "fsq3MbEqqgZHgwaIewUEDEN/fGb2WACJfp/X6aEyVfKG4ww="
 
+def configure():
+  load_dotenv()
 
 @app.route("/")
 def home():
@@ -56,4 +59,5 @@ def get_places_data():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+  configure()
+  app.run(debug=True)
