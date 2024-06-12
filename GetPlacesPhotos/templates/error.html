@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dist/css/output.css') }}"
+    />
+    <title>400 Location Not Found</title>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center h-screen"
+  >
+    <div class="text-center">
+      <h1 class="text-9xl font-bold text-gray-800 dark:text-white">400</h1>
+      <p class="text-2xl font-semibold text-gray-800 dark:text-white mt-2">
+        Location Not Found
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 mt-4">
+        The location you are looking for does not exist or an error occurred.
+      </p>
+      <a
+        href="{{ url_for('home') }}"
+        class="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg"
+      >
+        Go to Homepage
+      </a>
+    </div>
+  </body>
+</html>

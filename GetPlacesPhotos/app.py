@@ -29,7 +29,7 @@ def get_places_data():
     if g.ok:
         lat, lon = g.latlng
     else:
-        return "Location not found", 400
+        return render_template("error.html")
     
     ll = f"{lat},{lon}"
     
@@ -49,8 +49,6 @@ def get_places_data():
     response = requests.get(url, params=params, headers=headers)
     if response.status_code == 200:
       data = response.json()
-      # return render_template("results.html", data=data)
-      print(data)
       return render_template("places.html", d=data['results'])
     else:
       return f"Error: {response.status_code}", response.status_code
