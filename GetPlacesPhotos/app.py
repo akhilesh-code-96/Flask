@@ -62,12 +62,16 @@ def get_places_details(fsq_id):
     "accept": "application/json",
     "Authorization": api_key
   }
-
+  url1 = f"https://api.foursquare.com/v3/places/{fsq_id}"
+  
+  resp1 = requests.get(url=url1, headers=headers)
+  data1 = resp1.json()
+  place_name = data1['name']
   # Fetch photos from the Foursquare API
   resp = requests.get(url=f"https://api.foursquare.com/v3/places/{fsq_id}/photos", headers=headers)
   data = resp.json()
   print(data)
-  return render_template("details.html", d=data)
+  return render_template("details.html", d=data, place_name=place_name)
 
 @app.route('/fetch-image')
 def fetch_image():
