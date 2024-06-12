@@ -1623,6 +1623,10 @@ input:checked + .toggle-bg {
   font-weight: 600;
 }
 
+.font-light {
+  font-weight: 300;
+}
+
 .leading-6 {
   line-height: 1.5rem;
 }

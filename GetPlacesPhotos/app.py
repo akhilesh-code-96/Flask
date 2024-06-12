@@ -14,6 +14,7 @@ def get_places_data():
     category = request.form['category']
     limit = request.form['limit']
 
+    print(location)
     g = geocoder.osm(location)  # Using OpenStreetMap geocoder
     if g.ok:
         lat, lon = g.latlng
@@ -40,7 +41,7 @@ def get_places_data():
       data = response.json()
       # return render_template("results.html", data=data)
       print(data)
-      return redirect(url_for("places"))
+      return render_template("places.html", data=data)
     else:
       return f"Error: {response.status_code}", response.status_code
   
