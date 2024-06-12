@@ -25,12 +25,14 @@ def get_places_data():
     limit = request.form['limit']
 
     print(location)
-    g = geocoder.osm(location)  # Using OpenStreetMap geocoder
-    print(g.json)
     try:
-        lat, lon = g.latlng
-    except ValueError as error_message:
-        return render_template("error.html", d=error_message)
+      g = geocoder.osm(location)  # Using OpenStreetMap geocoder
+      if not g.ok:
+        raise ValueError(f"Geocoding failed for {location}. Status: {g.status}")
+
+      lat, lon = g.latlng
+    except Exception as error:
+      return render_template("error.html", error_message=str(error))
     
     ll = f"{lat},{lon}"
     
@@ -85,6 +87,15 @@ def fetch_image():
       return send_file(img, mimetype='image/jpeg')
   else:
       return "Image not found", 404
+    
+
+@app.route("/about")
+def about():
+  return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+  return render_template("contact.html")
 
 if __name__ == "__main__":
   configure()
