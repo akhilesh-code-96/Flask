@@ -77,8 +77,8 @@ def get_places_details(fsq_id):
 
 @app.route('/fetch-image')
 def fetch_image():
-  prefix = request.args.get('prefix')
-  suffix = request.args.get('suffix')
+  prefix = request.args.get('prefix', '')
+  suffix = request.args.get('suffix', '')
   img_url = "".join([prefix, "original", suffix])
   
   response = requests.get(img_url)
